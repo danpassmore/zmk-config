@@ -42,6 +42,7 @@
         bkspdel: backspace_delete {
             compatible = "zmk,behavior-mod-morph";
             label = "BACKSPACE_DELETE";
+            #binding-cells = <0>;
             bindings = <&kp BSPC>, <&kp DEL>;
             mods = <(MOD_LCTL|MOD_RCTL)>;
         };
