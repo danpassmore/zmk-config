@@ -42,7 +42,7 @@
     behaviors {
         bkspdel: backspace_delete {
             compatible = "zmk,behavior-mod-morph";
-            label = "BACKSPACE_DELETE"
+            label = "BACKSPACE_DELETE";
             bindings = <&kp BSPC>, <&kp DEL>;
             mods = <(MOD_LCTL|MOD_RCTL)>;
         };
@@ -78,6 +78,7 @@
                 &mt LPMD A &mt LRMD O &mt LMMD E &mt LIMD U   &lt BLE I    /**/ &lt BLE D    &mt RIMD H   &mt RMMD T &mt LRMD N &mt RPMD S
                 &kp SCLN   &kp Q      &lt MDMS J &kp K        &kp X        /**/ &kp B        &kp M        &lt MDMS W &kp V      &mt LSFT Z
                                                  &lt FNNV ESC &lt NMSM TAB /**/ &lt NMSM SPC &lt FNNV RET 
+            >;
         };
 
         qwerty_layer {
@@ -86,7 +87,7 @@
                 &mt LPMD A &mt LRMD S &mt LMMD D &mt LIMD F   &lt BLE G    /**/ &lt BLE H    &mt RIMD J   &mt RMMD K &mt LRMD L &mt RPMD QUOT
                 &kp Z      &kp X      &lt MDMS C &kp V        &kp B        /**/ &kp N        &kp M        &lt MDMS CMMA &kp DOT &mt LSFT RET
                                                  &lt FNNV ESC &lt NMSM TAB /**/ &lt NMSM SPC &lt FNNV RET 
-                >;
+            >;
         };
 
         nmsm_layer { /* numbers and symbols */
@@ -95,6 +96,7 @@
                 &kp KMLT   &kp N4     &kp N5     &kp N6       &kp FSLH     /**/ &kp HASH     &kp LPRN     &kp EQUAL  &kp AMPS   &kp RPRN
                 &kp N0     &kp N1     &kp N2     &kp N3       &kp BSLH     /**/ &kp GRAVE    &kp LBRK     &kp AT     &kp DLLR   &kp RBRK
                                                  &kp MINUS    &kp UNDER    /**/ &kp QMARK    &kp BANG 
+            >;
         };
 
         fnnv_layer { /* function keys and navigation */
@@ -103,6 +105,7 @@
                 &kp F11    &kp F4     &kp F5     &kp F6       &kp CAPS     /**/ &kp SLCK     &kp LEFT     &kp DOWN   &kp UP     &kp RIGHT
                 &kp F10    &kp F1     &kp F2     &kp F3       &kp PAUSE_BREAK   &none        &none        &none      &none      &none
                                                  &kp BKSP     &kp DEL      /**/ &kp BKSP     &kp DEL     
+            >;
         };
 
         mdms_layer { /* media and mouse */
@@ -111,6 +114,7 @@
                 &kp K_PREV   &kp K_STOP &kp K_PP   &kp K_NEXT   &none      /**/ &none        &none        &none      &none      &none   
                 &kp K_UNDO   &kp K_CUT  &kp K_COPY &kp K_PASTE  &kp K_REDO /**/ &none        &none        &none      &none      &none
                                                    &none        &none      /**/ &none        &none     
+            >;
         };
 
         ble_layer { /* media and mouse */
@@ -119,6 +123,7 @@
                 &bt BT_SEL 10 &bt BT_SEL 4 &bt BT_SEL 5 &bt BT_SEL 6 &none        /**/ &none        &none        &none      &none      &none   
                 &bt BT_SEL 0  &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_CLR   /**/ &none        &none        &none      &none      &none
                                                         &bt BT_PRV   &bt BT_NXT   /**/ &none        &none     
+            >;
         };
   };
 };
