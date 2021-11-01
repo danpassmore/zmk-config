@@ -117,8 +117,8 @@
 
         ble_layer { /* media and mouse */
             bindings = <
-                &bt BT_SEL 11 &bt BT_SEL 7 &bt BT_SEL 8 &bt BT_SEL 9 &out OUT_BLE /**/ &out OUT_USB &none        &none      &none      &none 
-                &bt BT_SEL 10 &bt BT_SEL 4 &bt BT_SEL 5 &bt BT_SEL 6 &none        /**/ &none        &none        &none      &none      &none   
+                &none         &none        &none        &none        &out OUT_BLE /**/ &out OUT_USB &none        &none      &none      &none 
+                &none         &bt BT_SEL 4 &none        &none        &none        /**/ &none        &none        &none      &none      &none   
                 &bt BT_SEL 0  &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_CLR   /**/ &none        &none        &none      &none      &none
                                                         &bt BT_PRV   &bt BT_NXT   /**/ &none        &none     
             >;
