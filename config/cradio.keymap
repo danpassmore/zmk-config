@@ -48,23 +48,39 @@
         };
     };
 
+
+    /* keys are numbered started at top left of left hand, and counting across both hands for the entire row.
+       So rows are 0-9, 10-19, 20-29, 30-33 (thumbs) 
+    */
     combos {
         compatible = "zmk,combos";
+
+        /* hit both left thumb keys at the same time for a delete keypress. 
+           Helpful for use with mouse or one-handed ctrl+alt+del. */
+        combo_left_thumb_delete {
+            timeout-ms = <50>;
+            key-positions = <30 31>;
+            bindings = <&kp DEL>;
+        };
+
+        /* hit outside corner keys (dvorak: ' ; l z)(qwerty q z p /) together to switch between dvorak and qwerty */
         combo_toggle_layout {
             timeout-ms = <50>;
             key-positions = <0 9 20 29>;
             bindings = <&tog QWRT>;
         };
 
+        /* hit the 4 keys closest to the microcontrollers (2 keys per hand) all together to go into bootloader */
         combo_bootloader {
             timeout-ms = <50>;
             key-positions = <14 15 24 25>;
             bindings = <&bootloader>;
         };
 
+        /* hit both right thumb keys at the same time to reset the keyboard */
         combo_reset {
             timeout-ms = <50>;
-            key-positions = <30 31>;
+            key-positions = <32 33>;
             bindings = <&reset>;
         };
     };
@@ -74,50 +90,50 @@
                 
         dvorak_layer {
             bindings = <
-                &kp QUOT   &kp CMMA   &kp DOT    &kp P        &kp Y        /**/ &kp F        &kp G        &kp C      &kp R      &kp L 
-                &mt LPMD A &mt LRMD O &mt LMMD E &mt LIMD U   &lt BLE I    /**/ &lt BLE D    &mt RIMD H   &mt RMMD T &mt LRMD N &mt RPMD S
-                &kp SCLN   &kp Q      &lt MDMS J &kp K        &kp X        /**/ &kp B        &kp M        &lt MDMS W &kp V      &mt LSFT Z
-                                                 &lt FNNV ESC &lt NMSM TAB /**/ &lt NMSM SPC &lt FNNV RET 
+                &kp QUOT   &kp CMMA   &lt MDMS DOT &kp P        &kp Y        /**/ &kp F        &kp G        &lt MDMS C &kp R      &kp L 
+                &mt LPMD A &mt LRMD O &mt LMMD E   &mt LIMD U   &lt BLE I    /**/ &lt BLE D    &mt RIMD H   &mt RMMD T &mt LRMD N &mt RPMD S
+                &kp SCLN   &kp Q      &kp J        &kp K        &kp X        /**/ &kp B        &kp M        &kp W      &kp V      &mt LSFT Z
+                                                   &lt FNNV ESC &lt NMSM TAB /**/ &lt NMSM SPC &lt FNNV RET 
             >;
         };
 
         qwerty_layer {
             bindings = <
-                &kp Q      &kp W      &kp E      &kp R        &kp T        /**/ &kp Y        &kp U        &kp I      &kp O      &kp P 
-                &mt LPMD A &mt LRMD S &mt LMMD D &mt LIMD F   &lt BLE G    /**/ &lt BLE H    &mt RIMD J   &mt RMMD K &mt LRMD L &mt RPMD QUOT
-                &kp Z      &kp X      &lt MDMS C &kp V        &kp B        /**/ &kp N        &kp M        &lt MDMS CMMA &kp DOT &mt LSFT RET
-                                                 &lt FNNV ESC &lt NMSM TAB /**/ &lt NMSM SPC &lt FNNV RET 
+                &kp Q      &kp W      &lt MDMS E   &kp R        &kp T        /**/ &kp Y        &kp U        &lt MDMS I &kp O      &kp P 
+                &mt LPMD A &mt LRMD S &mt LMMD D   &mt LIMD F   &lt BLE G    /**/ &lt BLE H    &mt RIMD J   &mt RMMD K &mt LRMD L &mt RPMD QUOT
+                &kp Z      &kp X      &kp C        &kp V        &kp B        /**/ &kp N        &kp M        &kp CMMA   &kp DOT    &kp FSLH
+                                                   &lt FNNV ESC &lt NMSM TAB /**/ &lt NMSM SPC &lt FNNV RET 
             >;
         };
 
         nmsm_layer { /* numbers and symbols */
             bindings = <
-                &kp KPLS   &kp N7     &kp N8     &kp N9       &kp PRCNT    /**/ &kp TILDE    &kp LBRC     &kp CRRT   &kp PIPE   &kp RBRC 
-                &kp KMLT   &kp N4     &kp N5     &kp N6       &kp FSLH     /**/ &kp HASH     &kp LPRN     &kp EQUAL  &kp AMPS   &kp RPRN
-                &kp N0     &kp N1     &kp N2     &kp N3       &kp BSLH     /**/ &kp GRAVE    &kp LBKT     &kp AT     &kp DLLR   &kp RBKT
-                                                 &kp MINUS    &kp UNDER    /**/ &kp QMARK    &kp BANG 
+                &kp KPLS   &kp N7     &kp N8       &kp N9       &kp PRCNT    /**/ &kp TILDE    &kp LBRC     &kp CRRT   &kp PIPE   &kp RBRC 
+                &kp KMLT   &kp N4     &kp N5       &kp N6       &kp MINUS    /**/ &kp HASH     &kp LPRN     &kp EQUAL  &kp AMPS   &kp RPRN
+                &kp N0     &kp N1     &kp N2       &kp N3       &kp FSLH     /**/ &kp GRAVE    &kp LBKT     &kp AT     &kp DLLR   &kp RBKT
+                                                   &kp BANG     &kp QMARK    /**/ &kp UNDER    &kp MINUS 
             >;
         };
 
         fnnv_layer { /* function keys and navigation */
             bindings = <
-                &kp F12    &kp F7     &kp F8     &kp F9       &kp PSCRN    /**/ &kp INSERT   &kp HOME     &kp PG_DN  &kp PG_UP  &kp END 
-                &kp F11    &kp F4     &kp F5     &kp F6       &kp CAPS     /**/ &kp SLCK     &kp LEFT     &kp DOWN   &kp UP     &kp RIGHT
-                &kp F10    &kp F1     &kp F2     &kp F3       &kp PAUSE_BREAK   &none        &none        &none      &none      &none
-                                                 &kp BKSP     &kp DEL      /**/ &kp BKSP     &kp DEL     
+                &kp F12    &kp F7     &kp F8       &kp F9       &kp PSCRN    /**/ &kp INSERT   &kp HOME     &kp PG_DN  &kp PG_UP  &kp END 
+                &kp F11    &kp F4     &kp F5       &kp F6       &kp CAPS     /**/ &kp SLCK     &kp LEFT     &kp DOWN   &kp UP     &kp RIGHT
+                &kp F10    &kp F1     &kp F2       &kp F3       &kp PAUSE_BREAK   &none        &none        &none      &none      &none
+                                                   &kp BSLH     &kp FSLH     /**/ &kp BKSP     &kp DEL     
             >;
         };
 
         mdms_layer { /* media and mouse */
             bindings = <
-                &kp K_VOL_DN &kp K_MUTE &kp K_MUTE &kp K_VOL_UP &none      /**/ &none        &none        &none      &none      &none 
-                &kp K_PREV   &kp K_STOP &kp K_PP   &kp K_NEXT   &none      /**/ &none        &none        &none      &none      &none   
-                &kp K_UNDO   &kp K_CUT  &kp K_COPY &kp K_PASTE  &kp K_REDO /**/ &none        &none        &none      &none      &none
-                                                   &none        &none      /**/ &none        &none     
+                &kp K_VOL_DN &kp K_MUTE &kp K_MUTE &kp K_VOL_UP &none        /**/ &none        &none        &none      &none      &none 
+                &kp K_PREV   &kp K_STOP &kp K_PP   &kp K_NEXT   &none        /**/ &none        &none        &none      &none      &none   
+                &kp K_UNDO   &kp K_CUT  &kp K_COPY &kp K_PASTE  &kp K_REDO   /**/ &none        &none        &none      &none      &none
+                                                   &none        &none        /**/ &none        &none     
             >;
         };
 
-        ble_layer { /* media and mouse */
+        ble_layer { /* bluetooth/connection settings */
             bindings = <
                 &bt BT_SEL 11 &bt BT_SEL 7 &bt BT_SEL 8 &bt BT_SEL 9 &out OUT_BLE /**/ &out OUT_USB &none        &none      &none      &none 
                 &bt BT_SEL 10 &bt BT_SEL 4 &bt BT_SEL 5 &bt BT_SEL 6 &none        /**/ &none        &none        &none      &none      &none   
